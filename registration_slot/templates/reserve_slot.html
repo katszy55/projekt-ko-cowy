@@ -1,0 +1,143 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#<h2>Rezerwuj slot</h2>#}
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <button type="submit">Zarezerwuj</button>#}
+{#    {% if form.non_field_errors %}#}
+{#        <div class="error">#}
+{#            {% for error in form.non_field_errors %}#}
+{#                <p style="color: red">{{ error }}</p>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    {% endif %}#}
+{#     {% if messages %}#}
+{#    <ul>#}
+{#        {% for message in messages %}#}
+{#        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#           <div>#}
+{#      <label for="id_vehicle_type">Vehicle Type:</label>#}
+{#      {{ form.vehicle_type.errors }}#}
+{#      {{ form.vehicle_type }}#}
+{#    </div>#}
+{#    <div>#}
+{#      <label for="id_services">Services:</label>#}
+{#      {{ form.services.errors }}#}
+{#      {{ form.services }}#}
+{#    </div>#}
+{#    <a href="{% url 'show_reserved_slot' %}">Zarezerwuj slot</a>#}
+{##}
+{#    {% endif %}#}
+{#</form>#}
+{#{% endblock %}#}
+
+
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#<h2>Rezerwuj slot</h2>#}
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{# <div>#}
+{##}
+{#    </div>#}
+{#    {{ form.as_p }}#}
+{#    <div>#}
+{#        <label for="id_services">Usługi:</label>#}
+{#        {{ form.services.errors }}#}
+{#        {{ form.services }}#}
+{#        <ul>#}
+{#            {% for service in services %}#}
+{#                <li>{{ service.description }}</li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    </div>#}
+{#    <button type="submit">Zarezerwuj</button>#}
+{#    {% if form.non_field_errors %}#}
+{#        <div class="error">#}
+{#            {% for error in form.non_field_errors %}#}
+{#                <p style="color: red">{{ error }}</p>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    {% endif %}#}
+{#    {% if messages %}#}
+{#        <ul>#}
+{#            {% for message in messages %}#}
+{#                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    {% endif %}#}
+{#    <div>#}
+{#        <label for="id_vehicle_type">Vehicle Type:</label>#}
+{#        {{ form.vehicle_type.errors }}#}
+{#        {{ form.vehicle_type }}#}
+{#    </div>#}
+{#    <a href="{% url 'show_reserved_slot' %}">Zarezerwuj slot</a>#}
+{#</form>#}
+{#{% endblock %}#}
+
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Rezerwuj slot</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+     <table>
+         <style>
+    caption {
+        font-weight: bold;
+    }
+    </style>
+
+         <caption>Price List</caption>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Price</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Storage</td>
+                        <td>1000</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Sorting</td>
+                        <td>2000</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery</td>
+                        <td>800</td>
+                        <td>1</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        <button type="submit">Zarezerwuj</button>
+        {% if form.non_field_errors %}
+            <div class="error">
+                {% for error in form.non_field_errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+
+        {% endif %}
+    </form>
+{% endblock %}

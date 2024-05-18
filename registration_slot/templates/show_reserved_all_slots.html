@@ -1,0 +1,34 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#<h2>Zarezerwowane sloty</h2>#}
+{# {% for slot in reserved_slots %}#}
+{#            <li>{{ slot.date }} - {{ slot.time_slot }} - {{ slot.reservation_type }} - {{ slot.location }}</li>#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
+
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#<h2>Zarezerwowane sloty</h2>#}
+{##}
+{#{% for location, slots in grouped_slots.items %}#}
+{#    <h3>{{ location }}</h3>#}
+{#    <ul>#}
+{#        {% for slot in slots %}#}
+{#            <li>{{ slot.date }} - {{ slot.time_slot }} - {{ slot.reservation_type }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#{% endfor %}#}
+{#{% endblock %}#}
+
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Zarezerwowane sloty</h2>
+{% for slot in reserved_slots %}
+    {% if slot.date >= today %}
+        <li>{{ slot.date }} - {{ slot.time_slot }} - {{ slot.reservation_type }} - {{ slot.vehicle_type }}</li>
+    {% endif %}
+{% endfor %}
+{% endblock %}

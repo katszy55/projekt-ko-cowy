@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Zarezerwowany slot</h2>
+<p>Lokalizacja: {{ latest_reservation.location}}</p>
+<p>Data: {{ latest_reservation.date }}</p>
+<p>Godzina: {{ latest_reservation.time_slot }}</p>
+<p>Typ rezerwacji: {{ latest_reservation.get_reservation_type_display }}</p>
+<p>Typ pojazdu: {{ latest_reservation.vehicle_type }}</p>
+<p>Usługi:</p>
+<ul>
+    {% if services %}
+        {% for service in services %}
+            <li>{{ service.description }}</li>
+        {% endfor %}
+    {% else %}
+        <li>Brak zarezerwowanych usług</li>
+    {% endif %}
+</ul>
+{% endblock %}
+
+
+

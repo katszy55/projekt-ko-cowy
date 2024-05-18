@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Witaj na Stronie Slot Reservation App</h2>
+    <p>{{ message }}</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+
+    </form>
+    <p>Naciśnij przycisk zarezerwuj aby przejść do strony rezerwacji</p>
+    <a href="{% url 'reserve_slot' %}">Zarezerwuj slot</a>
+{% endblock %}
+
+
