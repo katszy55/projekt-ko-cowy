@@ -29,7 +29,7 @@ def reserve_slot(request): # Widok rezerwacji
             reservation = form.save(commit=False)
             reservation.save()
 
-            # Zapisanie zarezerwowanych usług
+
             services = form.cleaned_data.get('services')
             reservation.services.set(services)
 
